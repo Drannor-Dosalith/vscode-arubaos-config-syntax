@@ -1,0 +1,37 @@
+{
+    "name": "vscode-arubaos-config-syntax",
+    "displayName": "ArubaOS Config Syntax",
+    "description": "Syntax for ArubaOS-switch configuration file",
+    "version": "0.3.0",
+    "license": "SEE LICENSE IN LICENSE.txt",
+    "publisher": "geekbinarynet",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Drannor-Dosalith/vscode-arubaos-config-syntax/arubaos-config-syntax.git"
+    },
+    "homepage": "https://github.com/Drannor-Dosalith/vscode-arubaos-config-syntax/blob/main/README.md",
+    "bugs": {
+        "url": "https://github.com/Drannor-Dosalith/vscode-arubaos-config-syntax/issues"
+    },
+    "engines": {
+        "vscode": "^1.49.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "keywords": ["Aruba","hp","ArubaOS"],
+    "preview": true,
+    "contributes": {
+        "languages": [{
+            "id": "ArubaOS",
+            "aliases": ["ArubaOS", "ArubaOS-Switch", "Aruba", "HP"],
+            "extensions": [".aos",".conf"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "ArubaOS",
+            "scopeName": "text.arubaos",
+            "path": "./syntaxes/ArubaOS.tmLanguage.json"
+        }]
+    }
+}

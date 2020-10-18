@@ -1,0 +1,65 @@
+; J9850A Configuration Editor; Created on release #KB.16.06.0006
+; Ver #13:4f.f8.1c.fb.7f.bf.bb.ff.7c.59.fc.7b.ff.ff.fc.ff.ff.3f.ef:49
+hostname "5406r-lz-Core"
+module A type j9993a
+module B type j9993a
+module C type j9986a
+module D type j9986a
+module E type j9986a
+trunk A1,B1 trk1 lacp
+logging 192.2.174.112
+timesync ntp
+no sntp
+ntp unicast
+ntp server 10.11.3.2
+ntp enable
+no telnet-server
+time daylight-time-rule continental-us-and-canada
+time timezone -300
+ip dns server-address priority 1 192.168.200.11
+ip route 0.0.0.0 0.0.0.0 10.20.1.20
+ip routing
+interface C1
+   name "Uplink"
+   qos trust dscp
+   speed-duplex 100-full
+   exit
+interface C8
+   name "WiFi"
+   qos trust dscp
+   speed-duplex auto-1000
+   exit
+interface Trk1
+   qos trust dscp
+   exit
+interface loopback 0
+   ip address 1.1.1.40
+   exit
+snmp-server community "public" unrestricted
+aaa authentication local-user "dol" group "Level-15"
+aaa authentication local-user "noxent" group "Level-15"
+oobm
+   ip address 192.168.253.2 255.255.255.0
+   ip default-gateway 192.168.253.1
+   exit
+vlan 1
+   name "DEFAULT_VLAN"
+   no untagged C1-C24,D1-D24,E1-E24
+   untagged A4-A8,B4-B8,Trk1-Trk3
+   no ip address
+   exit
+vlan 2
+   name "Test"
+   untagged C11,C13-C14,E1-E2,E4-E5
+   tagged Trk1-Trk3
+   ip address 10.40.2.1 255.255.255.0
+   ip helper-address 192.168.5.19
+   exit
+spanning-tree C1 bpdu-filter
+spanning-tree Trk1 priority 4
+allow-unsupported-transceiver
+no tftp server
+no autorun
+no dhcp config-file-update
+no dhcp image-file-update
+password manager

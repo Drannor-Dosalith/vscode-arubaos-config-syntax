@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://github.com/Drannor-Dosalith/vscode/arubaos-config-syntax/blob/main/images/5406R.png" width="300" height="200">
+  <img src="https://github.com/Drannor-Dosalith/vscode-arubaos-config-syntax/blob/main/images/5406R.png" width="300" height="200">
 	<h1>ArubaOS Highlighter Syntax</h1>
 	<p>
 		<b>Syntax highlighting for ArubaOS-Switch</b>

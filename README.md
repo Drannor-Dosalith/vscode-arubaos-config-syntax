@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://github.com/Drannor-Dosalith/vscode-arubaos-config-syntax/blob/main/images/5406R.png" width="300" height="200">
+  <img src="https://github.com/Drannor-Dosalith/vscode-arubaos-config-syntax/raw/main/images/5406R.png" width="300" height="200">
 	<h1>ArubaOS Highlighter Syntax</h1>
 	<p>
 		<b>Syntax highlighting for ArubaOS-Switch</b>
@@ -8,6 +8,11 @@
 	<br>
 	<br>
 </div>
+
+![version](https://img.shields.io/badge/version-0.3.0-blue)
+![licence](https://img.shields.io/github/license/Drannor-Dosalith/vscode-arubaos-config-syntax)
+![Stars](https://img.shields.io/github/stars/Drannor-Dosalith/vscode-arubaos-config-syntax)
+![Issues](https://img.shields.io/github/issues/Drannor-Dosalith/vscode-arubaos-config-syntax)
 
 ## About
 Visual Studio Code extension providing syntax highlighting for **ArubaOS-Switch** configuration files.
@@ -32,4 +37,4 @@ Please help us to make this exteension better either by reporting any issue or h
 * aaa
 
 ## Screenshots
-![Syntax Highlighting Demo](https://github.com/Drannor-Dosalith/vscode-arubaos-config-syntax/blob/main/images/sample.PNG)
+![Syntax Highlighting Demo](https://github.com/Drannor-Dosalith/vscode-arubaos-config-syntax/raw/main/images/sample.PNG)

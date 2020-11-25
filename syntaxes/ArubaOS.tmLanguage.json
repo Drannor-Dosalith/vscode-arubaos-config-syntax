@@ -1,738 +1,752 @@
 {
-	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
-	"name": "ArubaOS",
-	"patterns": [{
-			"include": "#keywords"
-		},
-		{
-			"include": "#strings"
-		},
-		{
-			"include": "#dhcp"
-		},
-		{
-			"include": "#comment"
-		},
-		{
-			"include": "#ponctuation"
-		},
-		{
-			"include": "#snmp-server"
-		},
-		{
-			"include": "#ntp"
-		},
-		{
-			"include": "#logging"
-		},
-		{
-			"include": "#ip_ipv6"
-		},
-		{
-			"include": "#ipaddress"
-		},
-		{
-			"include": "#subnetmask"
-		},
-		{
-			"include": "#interface"
-		},
-		{
-			"include": "#interfacenumber"
-		},
-		{
-			"include": "#password"
-		},
-		{
-			"include": "#aaa"
-		},
-		{
-			"include": "#router"
-		}
-	],
-	"repository": {
-		"keywords": {
-			"patterns": [{
-					"comment": "Negate command",
-					"name": "entity.name.tag.no.arubaos",
-					"match": "(?i)\\b(no)"
-				},
-				{
-					"comment": "disable",
-					"name": "entity.name.tag.disable.arubaos",
-					"match": "(?i)\\b(disable)"
-				},
-				{
-					"comment": "enable",
-					"name": "entity.name.function.enable.arubaos",
-					"match": "(?i)\\b(enable)"
-				},
-				{
-					"comment": "name",
-					"name": "storage.type.name.arubaos",
-					"match": "(?i)\\b(name)"
-				},
-				{
-					"comment": "hostname",
-					"name": "entity.name.function.hostname.arubaos",
-					"match": "(?i)\\b(hostname)"
-				},
-				{
-					"comment": "VLAN",
-					"name": "entity.name.function.vlan.arubaos",
-					"match": "(?i)vlan"
-				},
-				{
-					"comment": "exit",
-					"name": "keyword.exit.arubaos",
-					"match": "(?i)exit"
-				},
-				{
-					"comment": "Spanning-Tree",
-					"name": "entity.name.function.spanning-tree.arubaos",
-					"captures": {
-						"1":{"name":"entity.name.function"},
-						"2":{"name":"constant.numeric"},
-						"3":{"name":"variable.parameter"}
-					},
-					"match": "(?i)\\b(spanning-tree)\\s+?(\\w+)?\\s+?(\\b(bpdu-filter))?"
-				},
-				{
-					"comment": "tftp",
-					"name": "entity.name.function.tftp.arubaos",
-					"captures": {
-						"1": {
-							"name": "entity.name.function.arubaos"
-						},
-						"2": {
-							"name": "variable.parameter.arubaos"
-						}
-					},
-					"match": "(?i)(tftp)\\s+(\\w+)"
-				},
-				{
-					"comment": "priority",
-					"name": "variable.parameter.priority.arubaos",
-					"match": "(?i)priority"
-				},
-				{
-					"comment": "autorun",
-					"name": "entity.name.function.autorun.arubaos",
-					"match": "(?i)autorun"
-				},
-				{
-					"comment": "Trunk",
-					"name": "entity.name.function.trunk.arubaos",
-					"match": "(?i)(trunk)"
-				},
-				{
-					"comment": "LACP",
-					"name": "entity.name.function.lacp.arubaos",
-					"match": "(?i)(lacp)"
-				},
-				{
-					"comment": "IGMP",
-					"name": "entity.name.function.igmp.arubaos",
-					"match": "(?i)igmp"
-				},
-				{
-					"comment": "DHCP Snooping",
-					"name": "entity.name.function.dhcp-snopping.arubaos",
-					"match": "(?i)dhcp-snooping"
-				},
-				{
-					"comment": "access-list",
-					"name": "entity.name.function.access-list.arubaos",
-					"match": "(?i)access-list"
-				},
-				{
-					"comment": "console",
-					"name": "entity.name.function.console.arubaos",
-					"captures": {
-						"1": {
-							"name": "entity.name.function.arubaos"
-						},
-						"2": {
-							"name": "variable.parameter.arubaos"
-						}
-					},
-					"match": "(?i)(console)\\s+(\\w+-?\\w+)*"
-				},
-				{
-					"comment": "banner_motd",
-					"name": "entity.name.function.banner-motd.arubaos",
-					"captures": {
-						"1": {
-							"name": "entity.name.function"
-						},
-						"2": {
-							"name": "variable.parameter"
-						}
-					},
-					"match": "(?i)(banner)\\s+?(\\w+)?"
-				},
-				{
-					"comment": "POE",
-					"name": "storage.type.poe.arubaos",
-					"match": "(?i)power-over-ethernet"
-				},
-				{
-					"comment": "SNTP & Time",
-					"name": "entity.name.function.sntp.arubaos",
-					"captures": {
-						"1": {
-							"name": "entity.name.function.ntp.arubaos"
-						},
-						"2": {
-							"name": "variable.parameter"
-						}
-					},
-					"match": "(?i)(sntp|time)\\s+(\\w*-?\\w*-?\\w*\\s+?(.*)?)"
-				},
-				{
-					"comment": "OOBM",
-					"name": "entity.name.function.oobm.arubaos",
-					"match": "(?i)oobm"
-				},
-				{
-					"comment": "Untagged",
-					"name": "storage.type.untagged.arubaos",
-					"captures": {
-						"1": {
-							"name": "storage.type.arubaos"
-						},
-						"2": {
-							"name": "constant.numeric.arubaos"
-						}
-					},
-					"match": "(?i)(untagged)\\s+(.*)"
-				},
-				{
-					"comment": "tagged",
-					"name": "storage.type.tagged.arubaos",
-					"captures": {
-						"1": {
-							"name": "storage.type.arubaos"
-						},
-						"2": {
-							"name": "constant.numeric.arubaos"
-						}
-					},
-					"match": "(?i)(tagged)\\s+(.*)"
-				},
-				{
-					"comment": "Loop Protection",
-					"name": "keyword.control.directive.arubaos",
-					"match": "(?i)\\b(loop-protect)"
-				},
-				{
-					"comment": "cos",
-					"name": "storage.type.cos.arubaos",
-					"match": "(?i)\\b(cos)"
-				},
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "ArubaOS",
+  "patterns": [
+    {
+      "include": "#keywords"
+    },
+    {
+      "include": "#strings"
+    },
+    {
+      "include": "#dhcp"
+    },
+    {
+      "include": "#comment"
+    },
+    {
+      "include": "#punctuation"
+    },
+    {
+      "include": "#snmp-server"
+    },
+    {
+      "include": "#ntp"
+    },
+    {
+      "include": "#logging"
+    },
+    {
+      "include": "#ip_ipv6"
+    },
+    {
+      "include": "#ipaddress"
+    },
+    {
+      "include": "#subnetmask"
+    },
+    {
+      "include": "#interface"
+    },
+    {
+      "include": "#interfacenumber"
+    },
+    {
+      "include": "#password"
+    },
+    {
+      "include": "#aaa"
+    },
+    {
+      "include": "#router"
+    }
+  ],
+  "repository": {
+    "keywords": {
+      "patterns": [
+        {
+          "comment": "Negate command",
+          "name": "entity.name.tag.no.arubaos",
+          "match": "(?i)\\b(no)\\b"
+        },
+        {
+          "comment": "disable",
+          "name": "entity.name.tag.disable.arubaos",
+          "match": "(?i)\\b(disable)"
+        },
+        {
+          "comment": "enable",
+          "name": "entity.name.function.enable.arubaos",
+          "match": "(?i)\\b(enable)"
+        },
+        {
+          "comment": "name",
+          "name": "storage.type.name.arubaos",
+          "match": "(?i)\\b(name)\\b"
+        },
+        {
+          "comment": "hostname",
+          "name": "entity.name.function.hostname.arubaos",
+          "match": "(?i)\\b(hostname)"
+        },
+        {
+          "comment": "VLAN",
+          "name": "entity.name.function.vlan.arubaos",
+          "match": "(?i)vlan"
+        },
+        {
+          "comment": "exit",
+          "name": "keyword.exit.arubaos",
+          "match": "(?i)exit"
+        },
+        {
+          "comment": "Spanning-Tree",
+          "name": "entity.name.function.spanning-tree.arubaos",
+          "captures": {
+            "1": { "name": "entity.name.function" },
+            "2": { "name": "constant.numeric" },
+            "3": { "name": "variable.parameter" }
+          },
+          "match": "(?i)\\b(spanning-tree)\\s+?(\\w+)?\\s+?(\\b(bpdu-filter))?"
+        },
+        {
+          "comment": "tftp",
+          "name": "entity.name.function.tftp.arubaos",
+          "captures": {
+            "1": {
+              "name": "entity.name.function.arubaos"
+            },
+            "2": {
+              "name": "variable.parameter.arubaos"
+            }
+          },
+          "match": "(?i)(tftp)\\s+(\\w+)"
+        },
+        {
+          "comment": "priority",
+          "name": "variable.parameter.priority.arubaos",
+          "match": "(?i)priority"
+        },
+        {
+          "comment": "autorun",
+          "name": "entity.name.function.autorun.arubaos",
+          "match": "(?i)autorun"
+        },
+        {
+          "comment": "Trunk",
+          "name": "entity.name.function.trunk.arubaos",
+          "match": "(?i)(trunk)"
+        },
+        {
+          "comment": "LACP",
+          "name": "entity.name.function.lacp.arubaos",
+          "match": "(?i)(lacp)"
+        },
+        {
+          "comment": "IGMP",
+          "name": "entity.name.function.igmp.arubaos",
+          "match": "(?i)igmp"
+        },
+        {
+          "comment": "DHCP Snooping",
+          "name": "entity.name.function.dhcp-snopping.arubaos",
+          "match": "(?i)dhcp-snooping"
+        },
+        {
+          "comment": "access-list",
+          "name": "entity.name.function.access-list.arubaos",
+          "match": "(?i)access-list"
+        },
+        {
+          "comment": "console",
+          "name": "entity.name.function.console.arubaos",
+          "captures": {
+            "1": {
+              "name": "entity.name.function.arubaos"
+            },
+            "2": {
+              "name": "variable.parameter.arubaos"
+            }
+          },
+          "match": "(?i)(console)\\s+(\\w+-?\\w+)*"
+        },
+        {
+          "comment": "banner_motd",
+          "name": "entity.name.function.banner-motd.arubaos",
+          "captures": {
+            "1": {
+              "name": "entity.name.function"
+            },
+            "2": {
+              "name": "variable.parameter"
+            }
+          },
+          "match": "(?i)(banner)\\s+?(\\w+)?"
+        },
+        {
+          "comment": "POE",
+          "name": "storage.type.poe.arubaos",
+          "match": "(?i)power-over-ethernet"
+        },
+        {
+          "comment": "SNTP & Time",
+          "name": "entity.name.function.sntp.arubaos",
+          "captures": {
+            "1": {
+              "name": "entity.name.function.ntp.arubaos"
+            },
+            "2": {
+              "name": "variable.parameter"
+            }
+          },
+          "match": "(?i)(sntp|time)\\s+(\\w*-?\\w*-?\\w*\\s+?(.*)?)"
+        },
+        {
+          "comment": "OOBM",
+          "name": "entity.name.function.oobm.arubaos",
+          "match": "(?i)oobm"
+        },
+        {
+          "comment": "Untagged",
+          "name": "storage.type.untagged.arubaos",
+          "captures": {
+            "1": {
+              "name": "storage.type.arubaos"
+            },
+            "2": {
+              "name": "constant.numeric.arubaos"
+            }
+          },
+          "match": "(?i)(untagged)\\s+(.*)"
+        },
+        {
+          "comment": "tagged",
+          "name": "storage.type.tagged.arubaos",
+          "captures": {
+            "1": {
+              "name": "storage.type.arubaos"
+            },
+            "2": {
+              "name": "constant.numeric.arubaos"
+            }
+          },
+          "match": "(?i)(tagged)\\s+(.*)"
+        },
+        {
+          "comment": "Loop Protection",
+          "name": "keyword.control.directive.arubaos",
+          "match": "(?i)\\b(loop-protect)"
+        },
+        {
+          "comment": "cos",
+          "name": "storage.type.cos.arubaos",
+          "match": "(?i)\\b(cos)"
+        },
 
-				{
-					"comment": "device-profile",
-					"name": "entity.name.function.device-profile.arubaos",
-					"match": "(?i)device-profile"
+        {
+          "comment": "device-profile",
+          "name": "entity.name.function.device-profile.arubaos",
+          "match": "(?i)device-profile"
+        },
+        {
+          "comment": "telnet-server",
+          "name": "entity.name.function.telnet-server.arubaos",
+          "captures": {
+            "1": {
+              "name": "entity.name.function.arubaos"
+            },
+            "2": {
+              "name": "variable.parameter.arubaos"
+            }
+          },
+          "match": "(?i)(telnet-server)\\s+(\\w+)?"
+        },
+        {
+          "comment": "activate",
+          "name": "entity.name.function.activate.arubaos",
+          "captures": {
+            "1": {
+              "name": "entity.name.function.arubaos"
+            },
+            "2": {
+              "name": "variable.parameter.arubaos"
+            }
+          },
+          "match": "(?i)(activate)\\s+(\\w+-?\\w+)"
+        },
+        {
+          "comment": "QOS",
+          "name": "storage.type.qos.arubaos",
+          "captures": {
+            "1": {
+              "name": "storage.type.arubaos"
+            },
+            "2": {
+              "name": "variable.parameter.arubaos"
+            },
+            "3": {
+              "name": "variable.parameter.arubaos"
+            }
+          },
+          "match": "(?i)\\b(qos)\\s\\D+"
+        },
+        {
+          "comment": "allow-unsupported-transceiver",
+          "name": "entity.name.function.allow-unsupported-transiver.arubaos",
+          "match": "allow-unsupported-transceiver"
+        },
+        {
+          "comment": "module",
+          "name": "entity.name.function.module.arubaos",
+          "captures": {
+            "1": {
+              "name": "entity.name.function.arubaos"
+            },
+            "2": {
+              "name": "constant.character.arubaos"
+            },
+            "3": {
+              "name": "variable.parameter.arubaos"
+            },
+            "4": {
+              "name": "keyword.arubaos"
+            }
+          },
+          "match": "(?i)(module)\\s(\\w+)\\s(\\w+)\\s+(\\w+)"
+        },
+        {
+          "comment": "permit",
+          "name": "entity.name.function.permit.arubaos",
+          "match": "(?i)\\s+\\b(permit)"
+        },
+        {
+          "comment": "deny",
+          "name": "keyword.deny.arubaos",
+          "match": "(?i)\\s+\\b(deny)"
+        },
+        {
+          "comment": "log",
+          "name": "variable.parameter.log.arubaos",
+          "match": "\\s+\\b(log)+\\b"
+        },
+        {
+          "comment": "General numbers",
+          "match": "(?<=\\s)(\\d+)(?=[;]|\\s)",
+          "captures": {
+            "1": {
+              "name": "constant.numeric.general-number.arubaos"
+            }
+          }
+        },
 
-				},
-				{
-					"comment": "telnet-server",
-					"name": "entity.name.function.telnet-server.arubaos",
-					"captures": {
-						"1": {
-							"name": "entity.name.function.arubaos"
-						},
-						"2": {
-							"name": "variable.parameter.arubaos"
-						}
-					},
-					"match": "(?i)(telnet-server)\\s+(\\w+)?"
-				},
-				{
-					"comment": "activate",
-					"name": "entity.name.function.activate.arubaos",
-					"captures": {
-						"1": {
-							"name": "entity.name.function.arubaos"
-						},
-						"2": {
-							"name": "variable.parameter.arubaos"
-						}
-					},
-					"match": "(?i)(activate)\\s+(\\w+-?\\w+)"
-				},
-				{
-					"comment": "QOS",
-					"name": "storage.type.qos.arubaos",
-					"captures": {
-						"1": {
-							"name": "storage.type.arubaos"
-						},
-						"2": {
-							"name": "variable.parameter.arubaos"
-						},
-						"3": {
-							"name": "variable.parameter.arubaos"
-						}
+        {
+          "comment": "Subnet Mask with Interesting Octets",
+          "name": "keyword.control.subnetmask.arubaos",
+          "match": "(?<!(?:\\.|\\w))(255(?:\\.255){3})|(((?:255\\.){1,3})((?:254|252|248|240|224|192|128|0+)(?!\\.[1-9]+)(?:\\.0){0,2}))|(((255|254|252|248|240|224|192|128|0+))(?:\\.0+){3})(?!(?:\\.|\\w))",
+          "captures": {
+            "1": {
+              "name": "string.arubaos"
+            },
+            "2": {
+              "name": "string.arubaos"
+            },
+            "4": {
+              "name": "string.arubaos"
+            },
+            "5": {
+              "name": "string.arubaos"
+            }
+          }
+        }
+      ]
+    },
+    "strings": {
+      "name": "string.quoted.double.arubaos",
+      "begin": "\"",
+      "end": "\"",
+      "patterns": [
+        {
+          "name": "variable.arubaos",
+          "match": "\\\\."
+        }
+      ]
+    },
+    "ipaddress": {
+      "patterns": [
+        {
+          "comment": "IPv4 Addresses with/without subnet",
+          "name": "constant.numeric.ipaddress.arubaos",
+          "captures": {
+            "1": {
+              "name": "keyword.arubaos"
+            },
+            "2": {
+              "name": "keyword.arubaos"
+            },
+            "3": {
+              "name": "keyword.arubaos"
+            },
+            "4": {
+              "name": "keyword.arubaos"
+            }
+          },
+          "match": "([0-9]{1,3})\\.([0-9]{1,3})\\.([0-9]{1,3})\\.([0-9]{1,3})(\\/)?((?:[8-9]|[1-2][0-9]|[3][0-2]){1,2})?"
+        }
+      ]
+    },
+    "subnetmask": {
+      "patterns": [
+        {
+          "comment": "Subnet Mask with Interesting Octets",
+          "name": "keyword.control.subnetmask.arubaos",
+          "match": "(?<!(?:\\.|\\w))(255(?:\\.255){3})|(((?:255\\.){1,3})((?:254|252|248|240|224|192|128|0+)(?!\\.[1-9]+)(?:\\.0){0,2}))|(((255|254|252|248|240|224|192|128|0+))(?:\\.0+){3})(?!(?:\\.|\\w))",
+          "captures": {
+            "1": {
+              "name": "string.arubaos"
+            },
+            "2": {
+              "name": "string.arubaos"
+            },
+            "4": {
+              "name": "string.arubaos"
+            },
+            "5": {
+              "name": "string.arubaos"
+            }
+          }
+        }
+      ]
+    },
+    "dhcp": {
+      "patterns": [
+        {
+          "comment": "dhcp",
+          "name": "entity.name.function.dhcp.arubaos",
+          "captures": {
+            "1": { "name": "entity.name.function" },
+            "2": { "name": "variable.parameter" }
+          },
+          "match": "(?i)\\b(dhcp)\\s+\\b(image-file-update|config-file-update)"
+        }
+      ]
+    },
+    "snmp-server": {
+      "patterns": [
+        {
+          "comment": "snmp-server",
+          "name": "entity.name.function.snmp-server.arubaos",
+          "match": "(?i)(snmp-server)"
+        },
+        {
+          "comment": "community",
+          "name": "variable.parameter.snmp.community.arubaos",
+          "match": "(?i)community"
+        },
+        {
+          "comment": "unrestricted",
+          "name": "variable.parameter.snmp.unrestricted.arubaos",
+          "match": "(?i)unrestricted"
+        },
+        {
+          "comment": "traps",
+          "name": "variable.parameter.snmp.traps.arubaos",
+          "match": "(?i)\\b(trap)s?-?(\\w*)?"
+        },
+        {
+          "comment": "mac-count-notify",
+          "name": "variable.parameter.snmp.mac-count-notify.arubaos",
+          "match": "(?i)mac-count-notify"
+        }
+      ]
+    },
+    "ntp": {
+      "patterns": [
+        {
+          "comment": "ntp",
+          "name": "entity.name.function.ntp.arubaos",
+          "captures": {
+            "1": {
+              "name": "entity.name.function"
+            },
+            "2": {
+              "name": "variable.parameter"
+            }
+          },
+          "match": "(?i)^\\s*ntp\\s+((?:enable)|(\\w+))"
+        },
+        {
+          "comment": "timesync",
+          "name": "entity.name.function.timesync.arubaos",
+          "captures": {
+            "1": {
+              "name": "entity.name.function"
+            },
+            "2": {
+              "name": "variable.parameter.arubaos"
+            }
+          },
+          "match": "(?i)(timesync)\\s+(\\w+)"
+        },
+        {
+          "comment": "sntp",
+          "name": "entity.name.function.ntp.sntp.arubaos",
+          "match": "(?i)sntp"
+        },
+        {
+          "comment": "unicast",
+          "name": "variable.ntp.unicast.parameter",
+          "match": "(?i)unicast"
+        },
+        {
+          "comment": "server",
+          "name": "variable.ntp.server.parameter",
+          "match": "(?i)server"
+        }
+      ]
+    },
+    "interface": {
+      "patterns": [
+        {
+          "comment": "Interface",
+          "name": "entity.name.function.interface.arubaos",
+          "captures": {
+            "1": {
+              "name": "entity.name.function"
+            }
+          },
+          "match": "(?i)(interface)"
+        },
+        {
+          "comment": "Speed-Duplex",
+          "name": "storage.type.speed-duplex.arubaos",
+          "captures": {
+            "1": { "name": "storage.type" },
+            "2": { "name": "variable.parameter" }
+          },
+          "match": "(?i)\\s+\\b(speed-duplex)\\s+(\\b(?:auto-10[g])|\\b(?:auto-2500-5000)|\\b(?:auto-1000-2500-5000)|\\b(?:auto-1000-2500)|\\b(?:auto-2500)|\\b(?:1[0]{1,3}-(?:full|half))|auto-1[0]{1,3}(?:-1[0]{2})?)"
+        }
+      ]
+    },
+    "interfacenumber": {
+      "patterns": [
+        {
+          "comment": "Interface numerotation",
+          "name": "constant.numeric.interfacenumber.arubaos",
+          "match": "(?i)\\s(,|-)?(\\d{1}\\/)?[a-z]\\d{1,2}|(?<=(,|-))[a-z]\\d{1,2}|\\s\\d\\/\\d\\/\\d{1,2}|\\s\\d{1,2}\\/\\d{1,2}|(\\s|,|-)?\\b(trk)\\d{1,2}|\\b(loopback)"
+        }
+      ]
+    },
 
-					},
-					"match": "(?i)\\b(qos)\\s\\D+"
-				},
-				{
-					"comment": "allow-unsupported-transceiver",
-					"name": "entity.name.function.allow-unsupported-transiver.arubaos",
-					"match": "allow-unsupported-transceiver"
-				},
-				{
-					"comment": "module",
-					"name": "entity.name.function.module.arubaos",
-					"captures": {
-						"1": {
-							"name": "entity.name.function.arubaos"
-						},
-						"2": {
-							"name": "constant.character.arubaos"
-						},
-						"3": {
-							"name": "variable.parameter.arubaos"
-						},
-						"4": {
-							"name": "keyword.arubaos"
-						}
-					},
-					"match": "(?i)(module)\\s(\\w+)\\s(\\w+)\\s+(\\w+)"
-				},
-				{
-					"comment": "permit",
-					"name": "entity.name.function.permit.arubaos",
-					"match": "(?i)\\s+\\b(permit)"
-				},
-				{
-					"comment": "deny",
-					"name": "keyword.deny.arubaos",
-					"match": "(?i)\\s+\\b(deny)"
-				},
-				{
-					"comment": "log",
-					"name": "variable.parameter.log.arubaos",
-					"match": "\\s+\\b(log)"
-				},
-				{
-					"comment": "General numbers",
-					"match": "(?<=\\s)(\\d+)(?=[;]|\\s)",
-					"captures": {
-						"1": {
-							"name": "constant.numeric.general-number.arubaos"
-						}
-					}
-				},
-
-				{
-					"comment": "Subnet Mask with Interesting Octets",
-					"name": "keyword.control.subnetmask.arubaos",
-					"match": "(?<!(?:\\.|\\w))(255(?:\\.255){3})|(((?:255\\.){1,3})((?:254|252|248|240|224|192|128|0+)(?!\\.[1-9]+)(?:\\.0){0,2}))|(((255|254|252|248|240|224|192|128|0+))(?:\\.0+){3})(?!(?:\\.|\\w))",
-					"captures": {
-						"1": {
-							"name": "string.arubaos"
-						},
-						"2": {
-							"name": "string.arubaos"
-						},
-						"4": {
-							"name": "string.arubaos"
-						},
-						"5": {
-							"name": "string.arubaos"
-						}
-					}
-				}
-			]
-		},
-		"strings": {
-			"name": "string.quoted.double.arubaos",
-			"begin": "\"",
-			"end": "\"",
-			"patterns": [{
-				"name": "variable.arubaos",
-				"match": "\\\\."
-			}]
-		},
-		"ipaddress": {
-			"patterns": [{
-				"comment": "IPv4 Addresses with/without subnet",
-				"name": "constant.numeric.ipaddress.arubaos",
-				"captures": {
-					"1": {
-						"name": "keyword.arubaos"
-					},
-					"2": {
-						"name": "keyword.arubaos"
-					},
-					"3": {
-						"name": "keyword.arubaos"
-					},
-					"4": {
-						"name": "keyword.arubaos"
-					}
-				},
-				"match": "([0-9]{1,3})\\.([0-9]{1,3})\\.([0-9]{1,3})\\.([0-9]{1,3})(\\/)?((?:[8-9]|[1-2][0-9]|[3][0-2]){1,2})?"
-			}]
-		},
-		"subnetmask": {
-			"patterns": [{
-				"comment": "Subnet Mask with Interesting Octets",
-				"name": "keyword.control.subnetmask.arubaos",
-				"match": "(?<!(?:\\.|\\w))(255(?:\\.255){3})|(((?:255\\.){1,3})((?:254|252|248|240|224|192|128|0+)(?!\\.[1-9]+)(?:\\.0){0,2}))|(((255|254|252|248|240|224|192|128|0+))(?:\\.0+){3})(?!(?:\\.|\\w))",
-				"captures": {
-					"1": {
-						"name": "string.arubaos"
-					},
-					"2": {
-						"name": "string.arubaos"
-					},
-					"4": {
-						"name": "string.arubaos"
-					},
-					"5": {
-						"name": "string.arubaos"
-					}
-				}
-			}]
-		},
-		"dhcp":{
-			"patterns": [
-		{
-			"comment": "dhcp",
-			"name": "entity.name.function.dhcp.arubaos",
-			"captures": {
-				"1":{"name":"entity.name.function"},
-				"2":{"name":"variable.parameter"}
-			},
-			"match": "(?i)\\b(dhcp)\\s+\\b(image-file-update|config-file-update)"
-		}
-		]
-	},
-		"snmp-server": {
-			"patterns": [{
-					"comment": "snmp-server",
-					"name": "entity.name.function.snmp-server.arubaos",
-					"match": "(?i)(snmp-server)"
-				},
-				{
-					"comment": "community",
-					"name": "variable.parameter.snmp.community.arubaos",
-					"match": "(?i)community"
-				},
-				{
-					"comment": "unrestricted",
-					"name": "variable.parameter.snmp.unrestricted.arubaos",
-					"match": "(?i)unrestricted"
-				},
-				{
-					"comment": "traps",
-					"name": "variable.parameter.snmp.traps.arubaos",
-					"match": "(?i)\\b(trap)s?-?(\\w*)?"
-				},
-				{
-					"comment": "mac-count-notify",
-					"name": "variable.parameter.snmp.mac-count-notify.arubaos",
-					"match": "(?i)mac-count-notify"
-				}
-			]
-		},
-		"ntp": {
-			"patterns": [{
-					"comment": "ntp",
-					"name": "entity.name.function.ntp.arubaos",
-					"captures": {
-						"1": {
-							"name": "entity.name.function"
-						},
-						"2": {
-							"name": "variable.parameter"
-						}
-					},
-					"match": "(?i)^\\s*ntp\\s+((?:enable)|(\\w+))"
-				},
-				{
-					"comment": "timesync",
-					"name": "entity.name.function.timesync.arubaos",
-					"captures": {
-						"1": {
-							"name": "entity.name.function"
-						},
-						"2": {
-							"name": "variable.parameter.arubaos"
-						}
-					},
-					"match": "(?i)(timesync)\\s+(\\w+)"
-				},
-				{
-					"comment": "sntp",
-					"name": "entity.name.function.ntp.sntp.arubaos",
-					"match": "(?i)sntp"
-				},
-				{
-					"comment": "unicast",
-					"name": "variable.ntp.unicast.parameter",
-					"match": "(?i)unicast"
-				},
-				{
-					"comment": "server",
-					"name": "variable.ntp.server.parameter",
-					"match": "(?i)server"
-				}
-			]
-		},
-		"interface": {
-			"patterns": [
-				{
-					"comment": "Interface",
-					"name": "entity.name.function.interface.arubaos",
-					"captures": {
-						"1": {
-							"name": "entity.name.function"
-						}
-					},
-					"match": "(?i)(interface)"
-				},
-				{
-					"comment": "Speed-Duplex",
-					"name": "storage.type.speed-duplex.arubaos",
-					"captures": {
-						"1":{"name":"storage.type"},
-						"2":{"name":"variable.parameter"}
-					},
-					"match": "(?i)\\s+\\b(speed-duplex)\\s+(\\b(?:auto-10[g])|\\b(?:auto-2500-5000)|\\b(?:auto-1000-2500-5000)|\\b(?:auto-1000-2500)|\\b(?:auto-2500)|\\b(?:1[0]{1,3}-(?:full|half))|auto-1[0]{1,3}(?:-1[0]{2})?)"
-				}
-			]
-		},
-		"interfacenumber": {
-			"patterns": [{
-				"comment": "Interface numerotation",
-				"name": "constant.numeric.interfacenumber.arubaos",
-				"match": "(?i)\\s(,|-)?(\\d{1}\\/)?[a-z]\\d{1,2}|(?<=(,|-))[a-z]\\d{1,2}|\\s\\d\\/\\d\\/\\d{1,2}|\\s\\d{1,2}\\/\\d{1,2}|(\\s|,|-)?\\b(trk)\\d{1,2}|\\b(loopback)"
-			}]
-		},
-
-		"ip_ipv6": {
-			"patterns": [
-				{
-					"comment": "ip interface parameters",
-					"name":"storage.type.ip.parameters.arubaos",
-					"match": "\\s+\\b(ip)"
-				},
-				{
-					"comment": "ipv6",
-					"name": "entity.name.function.ip_ipv6.arubaos",
-					"captures": {
-						"1": {
-							"name": "entity.name.function.arubaos"
-						},
-						"2": {
-							"name": "variable.parameter.arubaos"
-						}
-					},
-					"match": "(?i)ipv6|ip(\\s+((?:enable)))?"
-				},
-				{
-					"comment": "all",
-					"name": "storage.type",
-					"match": "(?i)\\b(all)"
-				},
-				{
-					"comment": "syslog",
-					"name": "variable.parameter.ip.syslog.arubaos",
-					"match": "(?i)\\s+\\b(syslog)"
-				},
-				{
-					"comment": "default-gateway",
-					"name":"storage.type.ip.default-gateway.arubaos",
-					"match": "\\b(default-gateway)"
-				},
-				{
-					"comment": "vlan_argument",
-					"name": "variable.parameter.ip.vlan.arubaos",
-					"match": "(?i)\\s+\\b(vlan)"
-				},
-				{
-					"comment": "dhcp-bootp",
-					"name": "variable.parameter.ip.dhcp-bootp.arubaos",
-					"match": "(?i)\\b(dhcp-bootp)"
-				},
-				{
-					"comment": "server-address",
-					"name":"variable.parameter.ip.server-address.arubaos",
-					"match": "(?i)\\s+\\b(server-address)"
-				},
-				{
-					"comment": "address",
-					"name": "storage.type.ip.address.arubaos",
-					"match": "(?i)\\b(address|server-address|helper-address)"
-				},
-				{
-					"comment": "dns",
-					"name": "variable.parameter.ip.dns.arubaos",
-					"match": "(?i)\\b(dns)"
-				},
-				{
-					"comment": "route",
-					"name":"variable.parameter.ip.route.arubaos",
-					"match": "(?i)\\s+\\b(route)"
-				},
-				{
-					"comment": "routing",
-					"name":"variable.parameter.ip.routing.arubaos",
-					"match": "(?i)\\s+\\b(routing)"
-				}
-			]
-		},
-		"password": {
-			"patterns": [{
-					"comment": "Passwords",
-					"name": "entity.name.function.password.arubaos",
-					"match": "(?i)^\\b(password)"
-				},
-				{
-					"comment": "configuration",
-					"name": "variable.parameter.password.configuration.arubaos",
-					"match": "(?i)\\s+\\b(configuration)\\s+(\\b(expired-user-login)|\\b(update-interval-time)|\\b(alert-before-expiry)|\\b(aging)|\\b(history))"
-				},
-				{
-					"comment": "plaintext",
-					"name": "variable.parameter.plaintext.arubaos",
-					"match": "\\s+\\b(plaintext)"
-				},
-				{
-					"comment": "configuration-control",
-					"name": "variable.parameter.configuration-control.arubaos",
-					"match": "(?i)\\s+\\b(configuration-control)"
-				},
-				{
-					"comment": "manager_operator",
-					"name": "keyword.manager_operator.arubaos",
-					"match": "(?i)\\s+\\b(manager|operator)"
-				}
-			]
-		},
-		"aaa": {
-			"patterns": [{
-					"comment": "aaa",
-					"name": "entity.name.function.aaa.arubaos",
-					"match": "(?i)^\\b(aaa)"
-				},
-				{
-					"comment": "authorization",
-					"name": "variable.parameter.authorization.arubaos",
-					"captures": {
-						"1": {
-							"name": "variable.parameter.arubos"
-						},
-						"2": {
-							"name": "string.unquoted.arubaos"
-						}
-					},
-					"match": "(?i)\\s+\\b(authorization)\\s+?\\b(?:group)?\\s+?(\\w+-?\\w+)\\s+\\d{1,10}\\s+\\b(?:match-command)?|\\s+\\b(authorization)\\s+?\\b(?:commands)?\\s+?\\b(?:local|group|access-level|radius|none|auto|tacacs)"
-				},
-				{
-					"comment": "authentication",
-					"name": "variable.parameter.authentication.arubaos",
-					"captures": {
-						"1": {
-							"name": "variable.parameter.arubos"
-						},
-						"2": {
-							"name": "string.unquoted.arubaos"
-						},
-						"3": {
-							"name": "string.unquoted.arubaos"
-						}
-					},
-					"match": "(?i)\\s+\\b(authentication)\\s*(?:\\b(?:allow-vlan|captive-portal|console|disable-username|local-user|lockout-delay|login|mac-based|num-attempts|port-access|ssh|telnet|web|web-based)?)?\\s+?(\"?\\w*\"?)\\s+?(?:\\b(?:aging-period|clear-history-record|min-pwd-length|group)?)?\\s+?(\\S*?)\\s+?(?:\\b(?:password)?)?\\s*?(\\b(plaintext|sha1))?"
-				}
-			]
-		},
-		"router": {
-			"patterns": [
-				{
-					"comment": "router",
-					"name":"entity.name.function.router.arubasos",
-					"match": "(?i)^\\b(router)"
-				},
-				{
-					"comment": "ospf",
-					"name":"variable.parameter.router.ospf.arubaos",
-					"match": "(?i)\\s+\\b(ospf)\\s+"
-				},
-				{
-					"comment": "bgp",
-					"name":"variable.parameter.router.bgp.arubaos",
-					"match": "(?i)\\s+\\b(bgp)\\s+"
-				},
-				{
-					"comment": "graceful-restart",
-					"name":"variable.parameter.router.graceful-restart.arubaos",
-					"match": "(?i)\\s+\\b(graceful-restart)\\s+"
-				},
-				{
-					"comment": "ospfv3",
-					"name":"variable.parameter.router.ospfv3.arubaos",
-					"match": "(?i)\\s+\\b(ospfv3)\\s+"
-				},
-				{
-					"comment": "pim",
-					"name":"variable.parameter.router.pim.arubaos",
-					"match": "(?i)\\s+\\b(pim)\\s+\\b(bsr-candidate|join-prune-interval|rp-address|rp-candidate|rpf-override|spt-threshold|state-refresh|trap)"
-				},
-				{
-					"comment": "vrrp",
-					"name":"variable.parameter.router.vrrp.arubaos",
-					"match": "(?i)\\s+\\b(vrrp)\\s+?\\b(ipv4|ipv6|nonstop|traps)?"
-				},
-				{
-					"comment": "rip",
-					"name":"variable.parameter.router.rip.arubaos",
-					"match": "(?i)\\s+\\b(rip)\\s+"
-				},
-				{
-					"comment": "ripng",
-					"name":"variable.parameter.router.ripng.arubaos",
-					"match": "(?i)\\s+\\b(ripng)\\s+"
-				},
-				{
-					"comment": "backbone",
-					"name":"constant.numeric",
-					"match": "(?i)\\s+\\b(0.0.0.0|backbone)"
-				}
-			]
-		},
-		"logging":{
-			"patterns": [
-				{
-					"comment": "logging",
-					"name":"entity.name.function.logging.arubaos",
-					"match": "(?i)\\b(logging)"
-				}
-			]
-		},
-		"ponctuation":{
-			"patterns": [
-				{
-					"comment": "Default color for ponctuation",
-					"name":"constant.numeric.ponctuation.arubaos",
-					"match": "(-|,|\\.)"
-				}
-			]
-		},
-		"comment": {
-			"patterns": [{
-				"comment": "Comment Line",
-				"name": "comment.arubaos",
-				"match": "(^\\s*;.*)"
-			}]
-		}
-	},
-	"scopeName": "text.arubaos"
+    "ip_ipv6": {
+      "patterns": [
+        {
+          "comment": "ip interface parameters",
+          "name": "storage.type.ip.parameters.arubaos",
+          "match": "\\s+\\b(ip)"
+        },
+        {
+          "comment": "ipv6",
+          "name": "entity.name.function.ip_ipv6.arubaos",
+          "captures": {
+            "1": {
+              "name": "entity.name.function.arubaos"
+            },
+            "2": {
+              "name": "variable.parameter.arubaos"
+            }
+          },
+          "match": "(?i)ipv6|ip(\\s+((?:enable)))?"
+        },
+        {
+          "comment": "all",
+          "name": "storage.type",
+          "match": "(?i)\\b(all)"
+        },
+        {
+          "comment": "syslog",
+          "name": "variable.parameter.ip.syslog.arubaos",
+          "match": "(?i)\\s+\\b(syslog)"
+        },
+        {
+          "comment": "default-gateway",
+          "name": "storage.type.ip.default-gateway.arubaos",
+          "match": "\\b(default-gateway)"
+        },
+        {
+          "comment": "vlan_argument",
+          "name": "variable.parameter.ip.vlan.arubaos",
+          "match": "(?i)\\s+\\b(vlan)"
+        },
+        {
+          "comment": "dhcp-bootp",
+          "name": "variable.parameter.ip.dhcp-bootp.arubaos",
+          "match": "(?i)\\b(dhcp-bootp)"
+        },
+        {
+          "comment": "server-address",
+          "name": "variable.parameter.ip.server-address.arubaos",
+          "match": "(?i)\\s+\\b(server-address)"
+        },
+        {
+          "comment": "address",
+          "name": "storage.type.ip.address.arubaos",
+          "match": "(?i)\\b(address|server-address|helper-address)"
+        },
+        {
+          "comment": "dns",
+          "name": "variable.parameter.ip.dns.arubaos",
+          "match": "(?i)\\b(dns)"
+        },
+        {
+          "comment": "route",
+          "name": "variable.parameter.ip.route.arubaos",
+          "match": "(?i)\\s+\\b(route)"
+        },
+        {
+          "comment": "routing",
+          "name": "variable.parameter.ip.routing.arubaos",
+          "match": "(?i)\\s+\\b(routing)"
+        }
+      ]
+    },
+    "password": {
+      "patterns": [
+        {
+          "comment": "Passwords",
+          "name": "entity.name.function.password.arubaos",
+          "match": "(?i)^\\b(password)"
+        },
+        {
+          "comment": "configuration",
+          "name": "variable.parameter.password.configuration.arubaos",
+          "match": "(?i)\\s+\\b(configuration)\\s+(\\b(expired-user-login)|\\b(update-interval-time)|\\b(alert-before-expiry)|\\b(aging)|\\b(history))"
+        },
+        {
+          "comment": "plaintext",
+          "name": "variable.parameter.plaintext.arubaos",
+          "match": "\\s+\\b(plaintext)"
+        },
+        {
+          "comment": "configuration-control",
+          "name": "variable.parameter.configuration-control.arubaos",
+          "match": "(?i)\\s+\\b(configuration-control)"
+        },
+        {
+          "comment": "manager_operator",
+          "name": "keyword.manager_operator.arubaos",
+          "match": "(?i)\\s+\\b(manager|operator)"
+        }
+      ]
+    },
+    "aaa": {
+      "patterns": [
+        {
+          "comment": "aaa",
+          "name": "entity.name.function.aaa.arubaos",
+          "match": "(?i)^\\b(aaa)"
+        },
+        {
+          "comment": "authorization",
+          "name": "variable.parameter.authorization.arubaos",
+          "captures": {
+            "1": {
+              "name": "variable.parameter.arubos"
+            },
+            "2": {
+              "name": "string.unquoted.arubaos"
+            }
+          },
+          "match": "(?i)\\s+\\b(authorization)\\s+?\\b(?:group)?\\s+?(\\w+-?\\w+)\\s+\\d{1,10}\\s+\\b(?:match-command)?|\\s+\\b(authorization)\\s+?\\b(?:commands)?\\s+?\\b(?:local|group|access-level|radius|none|auto|tacacs)"
+        },
+        {
+          "comment": "authentication",
+          "name": "variable.parameter.authentication.arubaos",
+          "captures": {
+            "1": {
+              "name": "variable.parameter.arubos"
+            },
+            "2": {
+              "name": "string.unquoted.arubaos"
+            },
+            "3": {
+              "name": "string.unquoted.arubaos"
+            }
+          },
+          "match": "(?i)\\s+\\b(authentication)\\s*(?:\\b(?:allow-vlan|captive-portal|console|disable-username|local-user|lockout-delay|login|mac-based|num-attempts|port-access|ssh|telnet|web|web-based)?)?\\s+?(\"?\\w*\"?)\\s+?(?:\\b(?:aging-period|clear-history-record|min-pwd-length|group)?)?\\s+?(\\S*?)\\s+?(?:\\b(?:password)?)?\\s*?(\\b(plaintext|sha1))?"
+        }
+      ]
+    },
+    "router": {
+      "patterns": [
+        {
+          "comment": "router",
+          "name": "entity.name.function.router.arubasos",
+          "match": "(?i)^\\b(router)"
+        },
+        {
+          "comment": "ospf",
+          "name": "variable.parameter.router.ospf.arubaos",
+          "match": "(?i)\\s+\\b(ospf)\\s+"
+        },
+        {
+          "comment": "bgp",
+          "name": "variable.parameter.router.bgp.arubaos",
+          "match": "(?i)\\s+\\b(bgp)\\s+"
+        },
+        {
+          "comment": "graceful-restart",
+          "name": "variable.parameter.router.graceful-restart.arubaos",
+          "match": "(?i)\\s+\\b(graceful-restart)\\s+"
+        },
+        {
+          "comment": "ospfv3",
+          "name": "variable.parameter.router.ospfv3.arubaos",
+          "match": "(?i)\\s+\\b(ospfv3)\\s+"
+        },
+        {
+          "comment": "pim",
+          "name": "variable.parameter.router.pim.arubaos",
+          "match": "(?i)\\s+\\b(pim)\\s+\\b(bsr-candidate|join-prune-interval|rp-address|rp-candidate|rpf-override|spt-threshold|state-refresh|trap)"
+        },
+        {
+          "comment": "vrrp",
+          "name": "variable.parameter.router.vrrp.arubaos",
+          "match": "(?i)\\s+\\b(vrrp)\\s+?\\b(ipv4|ipv6|nonstop|traps)?"
+        },
+        {
+          "comment": "rip",
+          "name": "variable.parameter.router.rip.arubaos",
+          "match": "(?i)\\s+\\b(rip)\\s+"
+        },
+        {
+          "comment": "ripng",
+          "name": "variable.parameter.router.ripng.arubaos",
+          "match": "(?i)\\s+\\b(ripng)\\s+"
+        },
+        {
+          "comment": "backbone",
+          "name": "constant.numeric",
+          "match": "(?i)\\s+\\b(0.0.0.0|backbone)"
+        }
+      ]
+    },
+    "logging": {
+      "patterns": [
+        {
+          "comment": "logging",
+          "name": "entity.name.function.logging.arubaos",
+          "match": "(?i)\\b(logging)"
+        }
+      ]
+    },
+    "punctuation": {
+      "patterns": [
+        {
+          "comment": "Default color for punctuation",
+          "name": "constant.numeric.punctuation.arubaos",
+          "match": "(-|,|\\.)"
+        }
+      ]
+    },
+    "comment": {
+      "patterns": [
+        {
+          "comment": "Comment Line",
+          "name": "comment.arubaos",
+          "match": "(^\\s*;.*)"
+        }
+      ]
+    }
+  },
+  "scopeName": "text.arubaos"
 }

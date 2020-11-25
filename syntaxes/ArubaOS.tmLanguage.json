@@ -57,7 +57,7 @@
         {
           "comment": "Negate command",
           "name": "entity.name.tag.no.arubaos",
-          "match": "(?i)\\b(no)"
+          "match": "(?i)\\b(no)\\b"
         },
         {
           "comment": "disable",
@@ -72,7 +72,7 @@
         {
           "comment": "name",
           "name": "storage.type.name.arubaos",
-          "match": "(?i)\\b(name)"
+          "match": "(?i)\\b(name)\\b"
         },
         {
           "comment": "hostname",
@@ -317,7 +317,7 @@
         {
           "comment": "log",
           "name": "variable.parameter.log.arubaos",
-          "match": "\\s+\\b(log)"
+          "match": "\\s+\\b(log)+\\b"
         },
         {
           "comment": "General numbers",

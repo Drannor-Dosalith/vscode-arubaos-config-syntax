@@ -25,7 +25,7 @@
         "languages": [{
             "id": "ArubaOS",
             "aliases": ["ArubaOS", "ArubaOS-Switch", "Aruba", "HP"],
-            "extensions": [".aos",".conf"],
+            "extensions": [".aos",".conf",".txt"],
             "configuration": "./language-configuration.json"
         }],
         "grammars": [{

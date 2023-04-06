@@ -18,7 +18,7 @@
 Visual Studio Code extension providing syntax highlighting for **ArubaOS-Switch** configuration files.
 The extension is not yet complete and is in beta but most of the most common command are supported.
 
-Please help us to make this exteension better either by reporting any issue or helping adding command support.
+Please help us to make this extension better either by reporting any issue or helping adding command support.
 
 ## Most common command supported
 * interface
